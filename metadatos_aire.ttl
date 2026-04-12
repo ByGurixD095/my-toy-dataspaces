@@ -1,0 +1,23 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dqv: <http://www.w3.org/ns/dqv#> .
+@prefix bigowl: <http://www.purl.org/oeg/bigowl4dq#> .
+@prefix iso25012: <http://ejemplo.org/iso25012#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix: <http://ejemplo.org/datos/> .
+
+<http://localhost:5000/dataset/calidad-aire-cr> a dcat:Dataset ;
+    dct:title "Calidad del Aire en Ciudad Real" ;
+    dct:description "Mediciones de PM10 y NO2 con algunos valores faltantes." ;
+    dcat:distribution <http://localhost:5000/dataset/calidad-aire-cr/resource/json> ;
+    dqv:hasQualityMeasurement :MedicionCompletitudAire .
+
+<http://localhost:5000/dataset/calidad-aire-cr/resource/json> a dcat:Distribution ;
+    dct:title "Archivo JSON de datos de calidad del aire" ;
+    dct:format "JSON" ;
+    dcat:accessURL <http://localhost:5000/dataset/calidad-aire-cr/resource/json> .
+
+:MedicionCompletitudAire a dqv:QualityMeasurement ;
+    dqv:isMeasurementOf iso25012:Completitud ;
+    dqv:value "75.0"^^xsd:decimal ;
+    bigowl:hasQualityDimension bigowl:Completeness .
